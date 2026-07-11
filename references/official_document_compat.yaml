@@ -1,0 +1,82 @@
+# 公文模板配置 —— 开源字体预设（思源系列，SIL OFL 协议，免费可商用）
+# 与 official_document.yaml 唯一差别：字体改用思源字体，对方无需任何商业字体即可生成。
+# 用法：python3 scripts/generate.py content.json out.docx --template official_document_compat
+# 注意：思源字体需对方自行安装（见 字体安装说明.md）。若未安装，generate.py 仍会自动降级。
+
+name: "公文（开源字体）"
+description: "公文格式（参考 GB/T 9704）：使用免费开源的思源宋体/黑体，无需商业字体"
+version: "1.1-compat"
+
+# === 页面设置（GB/T 9704 第5条）===
+page:
+  size: "A4"                              # A4纸 210mm × 297mm
+  margins:
+    top: "3.7cm"                          # 上边距 37mm
+    bottom: "3.5cm"                       # 下边距 35mm
+    left: "2.8cm"                         # 左边距 28mm
+    right: "2.6cm"                        # 右边距 26mm
+
+# === 字体设置（思源系列，SIL OFL）===
+fonts:
+  body:
+    latin: "Times New Roman"
+    east_asia: "Source Han Serif SC"      # 正文：思源宋体（楷体无完美开源替代，正文沿用思源宋体）
+    size: 16
+  heading:
+    latin: "Times New Roman"
+    east_asia: "Source Han Sans SC"       # 一级标题（一、）：思源黑体
+    color: "000000"
+    h1_size: 22                           # 文件标题：思源宋体粗（近似方正小标宋）
+    h1_east_asia: "Source Han Serif SC Heavy"
+    h2_size: 16                           # 一级标题：思源黑体
+    h3_size: 16                           # 二级标题：思源宋体
+    h3_east_asia: "Source Han Serif SC"
+    h1_alignment: "center"                # 文件标题居中
+
+# 公文不使用自动编号，标题编号由用户手写
+heading_numbering: {}
+
+# === 段落设置 ===
+paragraph:
+  line_spacing: "28.95pt"                 # 正文固定行距 ≈ 每面22行
+  title_line_spacing: "single"            # 文件标题行距：两行时单倍行距；超两行改为 "35pt"
+  space_after: 0                          # 段后间距 0
+  first_line_indent: 32                   # 首行缩进 32pt = 2个三号字宽度
+  alignment: "justified"                  # 两端对齐
+
+# === 表格设置 ===
+table:
+  style: "full_border"                    # 公文表格使用全框线
+  header_shading: "FFFFFF"                # 表头无底色
+  header_text_color: "000000"
+  border_color: "000000"
+  border_size: 4
+  alignment: "center"
+
+# === 封面（红头）设置 ===
+cover_page:
+  title_font:
+    east_asia: "Source Han Serif SC Heavy"  # 红头字体：思源宋体粗
+    size: 26
+    color: "FF0000"                         # 红色
+  subtitle_font:
+    east_asia: "Source Han Sans SC"         # 思源黑体
+    size: 22
+  info_font:
+    east_asia: "Source Han Serif SC"        # 发文字号字体
+    size: 16
+  center_align: true
+  separator:
+    color: "FF0000"                         # 红色分隔线
+    width: 4
+
+# === 页眉页脚 ===
+header_footer:
+  header_visible: false                   # 公文无页眉
+  footer_type: "page_number"              # 页脚仅显示页码
+  footer_font_size: 14
+  footer_color: "000000"
+
+# === 文本自动处理 ===
+text_processing:
+  convert_quotes: true                    # 自动将英文直引号转为中文引号

@@ -1,0 +1,80 @@
+# 公文模板配置（GB/T 9704-2012 党政机关公文格式）
+# 此文件是模板的源文件（国标字体版，需方正小标宋等）。开源字体版见 official_document_compat.yaml
+
+name: "公文"
+description: "党政机关公文格式（GB/T 9704）：红头文件风格，仿宋三号正文，固定行距"
+version: "1.2"
+
+# === 页面设置（GB/T 9704 第5条）===
+page:
+  size: "A4"                              # A4纸 210mm × 297mm
+  margins:
+    top: "3.7cm"                          # 上边距 37mm
+    bottom: "3.5cm"                       # 下边距 35mm
+    left: "2.8cm"                         # 左边距 28mm
+    right: "2.6cm"                        # 右边距 26mm
+
+# === 字体设置（GB/T 9704 第7条）===
+fonts:
+  body:
+    latin: "Times New Roman"
+    east_asia: "FangSong"                 # 正文：仿宋 三号(16pt)
+    size: 16
+  heading:
+    latin: "Times New Roman"
+    east_asia: "黑体-简"                  # 一级标题（一、）：黑体 三号(16pt)
+    color: "000000"
+    h1_size: 22                           # 文件标题：方正小标宋 二号(22pt)
+    h1_east_asia: "方正小标宋简体"
+    h2_size: 16                           # 一级标题（一、）：黑体 三号
+    h3_size: 16                           # 二级标题（（一））：楷体 三号
+    h3_east_asia: "楷体-简"
+    h1_alignment: "center"                # 文件标题居中
+
+# 公文不使用自动编号，标题编号由用户手写
+heading_numbering: {}
+
+# === 段落设置 ===
+paragraph:
+  line_spacing: "28.95pt"                 # 正文固定行距 ≈ 每面22行（GB/T 9704 定义"一行"= 10.39mm）
+  title_line_spacing: "single"            # 文件标题行距：两行时单倍行距；超两行改为 "35pt"
+  space_after: 0                          # 段后间距 0
+  first_line_indent: 32                   # 首行缩进 32pt = 2个三号字宽度
+  alignment: "justified"                  # 两端对齐
+
+# === 表格设置 ===
+table:
+  style: "full_border"                    # 公文表格使用全框线
+  header_shading: "FFFFFF"                # 表头无底色
+  header_text_color: "000000"
+  border_color: "000000"
+  border_size: 4
+  alignment: "center"
+
+# === 封面（红头）设置 ===
+cover_page:
+  title_font:
+    east_asia: "方正小标宋简体"           # 红头字体
+    size: 26
+    color: "FF0000"                       # 红色
+  subtitle_font:
+    east_asia: "黑体-简"
+    size: 22
+  info_font:
+    east_asia: "FangSong"                 # 发文字号字体
+    size: 16
+  center_align: true
+  separator:
+    color: "FF0000"                       # 红色分隔线
+    width: 4
+
+# === 页眉页脚 ===
+header_footer:
+  header_visible: false                   # 公文无页眉
+  footer_type: "page_number"              # 页脚仅显示页码
+  footer_font_size: 14
+  footer_color: "000000"
+
+# === 文本自动处理 ===
+text_processing:
+  convert_quotes: true                    # 自动将英文直引号转为中文引号
